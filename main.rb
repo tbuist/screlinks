@@ -29,7 +29,7 @@ class Parser
       parse(response) if response.code == 200
       count += 1
       $logger.info("API hit with response code #{response.code}")
-      sleep 10
+      sleep 60
     end
   end
 
