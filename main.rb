@@ -90,5 +90,17 @@ path_to = {
 # ARGV[0] = pushbullet, ARGV[1] = trakt.tv
 raise 'One or both API Keys not given' unless ARGV[0] && ARGV[1]
 search_for = get_trakt_shows(ARGV[1])
+
+# Search for additional things by including them in text files by line and add as cmd line arg
+counter = 0
+ARGV.each_with_index do |arg, idx|
+  next if idx < 2
+  File.foreach(arg).with_index do |line, line_num|
+    search_for << line.strip
+    counter = counter + 1
+  end
+end
+puts "Found #{counter} extra things to search for"
+
 parser = Parser.new(base_url, fetch_limit, search_for, path_to, ARGV[0])
 parser.run

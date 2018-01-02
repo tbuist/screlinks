@@ -2,3 +2,4 @@ log
 pushapi.key
 traktapi.key
 access_token
+*.txt
