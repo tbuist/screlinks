@@ -100,7 +100,7 @@ ARGV.each_with_index do |arg, idx|
     counter = counter + 1
   end
 end
-puts "Found #{counter} extra things to search for"
+$logger.info("Found #{counter} extra things to search for")
 
 parser = Parser.new(base_url, fetch_limit, search_for, path_to, ARGV[0])
 parser.run
